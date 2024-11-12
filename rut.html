@@ -1,2 +1,143 @@
-<html>
-<\html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ежедневник</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .date-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .date {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .add-button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .tasks-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .task {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task-text {
+            font-size: 16px;
+        }
+
+        .complete-button {
+            background-color: #008CBA;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Мой Ежедневник</h1>
+    </header>
+
+    <main>
+        <div class="date-container">
+            <div class="date">
+                <!-- Дата будет вставляться JavaScript -->
+            </div>
+            <button class="add-button">Добавить задачу</button>
+        </div>
+
+        <ul class="tasks-list">
+            <!-- Задачи будут вставляться JavaScript -->
+        </ul>
+    </main>
+
+    <script>
+        // Получаем текущую дату
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString('ru-RU', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        // Вставляем дату в HTML
+        document.querySelector('.date').textContent = formattedDate;
+
+        // Обработчик события для кнопки "Добавить задачу"
+        const addButton = document.querySelector('.add-button');
+        addButton.addEventListener('click', () => {
+            const taskText = prompt("Введите текст задачи:");
+            if (taskText !== null && taskText !== "") {
+                // Создаем новый элемент задачи
+                const newTask = document.createElement('li');
+                newTask.classList.add('task');
+
+                // Вставляем текст задачи
+                const taskTextElement = document.createElement('span');
+                taskTextElement.classList.add('task-text');
+                taskTextElement.textContent = taskText;
+                newTask.appendChild(taskTextElement);
+
+                // Создаем кнопку "Завершить"
+                const completeButton = document.createElement('button');
+                completeButton.classList.add('complete-button');
+                completeButton.textContent = 'Завершить';
+                completeButton.addEventListener('click', () => {
+                    taskTextElement.classList.toggle('completed');
+                });
+                newTask.appendChild(completeButton);
+
+                // Добавляем задачу в список
+                document.querySelector('.tasks-list').appendChild(newTask);
+            }
+        });
+    </script>
+</body>
+</html>
