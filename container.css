@@ -1,0 +1,24 @@
+p {
+    /* padding-top: 40px; */
+    margin: 0;
+    /* font-size: 50px; */
+    /* font-family: sans-serif; */
+    text-align: center;
+    /* vertical-align: middle; */
+    color: rgb(182, 72, 129);
+    font-size: 300%;
+    /* text-indent: 200px; */
+  }
+
+
+/* .inner-div {
+    /* height: 100px;
+    width: 200px;
+    margin: 10px; */
+    /* background-color: #096eeb; */
+
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
